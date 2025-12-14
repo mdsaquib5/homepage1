@@ -9,7 +9,7 @@ import heroImg from '../assets/images/hero.jpg';
 const Hero = () => {
     return (
         <>
-            <div className='relative overflow-hidden min-h-screen bg-cover bg-center mt-20' style={{ backgroundImage: `url(${heroImg})` }}>
+            <div className='relative overflow-hidden min-h-screen bg-cover bg-center mt-4 md:mt-14 xl:mt-0' style={{ backgroundImage: `url(${heroImg})` }}>
                 <div className='grid grid-cols-1 lg:grid-cols-2 items-center min-h-screen'>
                     {/* Left Content Section */}
                     <div className='px-4 sm:px-6 lg:px-0 py-20 lg:py-10'>
