@@ -3,13 +3,13 @@
 @import "tailwindcss";
 
 
-@theme inline{
+@theme inline {
     --color-body: #ecf0f0;
     --color-primary: #1e8a8a;
     --color-dark: #0c1e21;
 }
 
-body{
+body {
     /* background: var(--color-body); */
     font-family: "Poppins", sans-serif;
 }
@@ -57,11 +57,12 @@ body{
     transform-style: preserve-3d;
 }
 
-.swiper-wrapper{
+.swiper-wrapper {
     padding-top: 80px;
 }
 
-.swiper-button-next, .swiper-button-prev{
+.swiper-button-next,
+.swiper-button-prev {
     background-color: #fff;
     border-radius: 50%;
     width: 50px;
@@ -83,7 +84,7 @@ body{
     /* backward button */
 }
 
-.swiper-button-prev{
+.swiper-button-prev {
     top: 44% !important;
     rotate: 90deg;
     /* forward button */
@@ -91,24 +92,21 @@ body{
 
 /* Responsive */
 @media (max-width: 1024px) {
-    .swiper-container-wrapper {
-        height: 600px;
-        perspective: 1000px;
-    }
-    
-    .food-swiper {
-        width: 400px;
-    }
-    
+
     .food-plate-container {
-        width: 280px;
-        height: 280px;
+        width: 250px;
+        height: 250px;
     }
-    
+
     .swiper-slide-active .food-plate-container {
-        width: 350px;
-        height: 350px;
+        width: 300px;
+        height: 300px;
     }
+
+    .swiper-container-wrapper {
+        transform: translateX(100px);
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -116,22 +114,22 @@ body{
         height: 450px;
         perspective: 800px;
     }
-    
+
     .food-swiper {
         width: 100%;
         padding: 30px 0;
     }
-    
+
     .food-plate-container {
         width: 260px;
         height: 260px;
     }
-    
+
     .swiper-slide-active .food-plate-container {
         width: 320px;
         height: 320px;
     }
-    
+
     .garnish {
         font-size: 30px;
         bottom: 20px;
