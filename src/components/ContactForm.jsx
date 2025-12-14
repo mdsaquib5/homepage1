@@ -1,13 +1,12 @@
-// components/ContactForm.js
 import React, { useState } from 'react';
+import { FaUser, FaEnvelope, FaPhone, FaComment, FaPaperPlane } from 'react-icons/fa';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    message: '',
-    orderType: 'delivery'
+    message: ''
   });
 
   const handleChange = (e) => {
@@ -19,268 +18,124 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you! Your order has been submitted. We will contact you shortly.');
-    setFormData({ name: '', email: '', phone: '', message: '', orderType: 'delivery' });
+    console.log('Form submitted:', formData);
+    alert('Thank you for your message! We will get back to you soon.');
+    setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
-  const contactMethods = [
-    {
-      icon: '📞',
-      title: 'Call Us',
-      details: '+1 (555) 123-FOOD',
-      time: '24/7 Available'
-    },
-    {
-      icon: '💬',
-      title: 'WhatsApp',
-      details: '+1 (555) 987-6543',
-      time: 'Quick Replies'
-    },
-    {
-      icon: '📍',
-      title: 'Visit Us',
-      details: '123 Food Street',
-      time: '11AM-11PM Daily'
-    }
-  ];
-
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Left Column - Food Images & Contact Info */}
-        <div className="space-y-8">
-          {/* Food Image Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 flex flex-col items-center justify-center min-h-[200px]">
-              <div className="text-5xl mb-4">🍕</div>
-              <h4 className="font-bold text-gray-900">Hot & Spicy</h4>
-              <p className="text-gray-600 text-sm text-center">Our bestselling pizza</p>
-            </div>
-            
-            <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl p-6 flex flex-col items-center justify-center min-h-[200px]">
-              <div className="text-5xl mb-4">🍗</div>
-              <h4 className="font-bold text-gray-900">Crispy Chicken</h4>
-              <p className="text-gray-600 text-sm text-center">Freshly fried daily</p>
-            </div>
-            
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 flex flex-col items-center justify-center min-h-[200px]">
-              <div className="text-5xl mb-4">🥗</div>
-              <h4 className="font-bold text-gray-900">Healthy Options</h4>
-              <p className="text-gray-600 text-sm text-center">Fresh salads & sides</p>
-            </div>
-            
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 flex flex-col items-center justify-center min-h-[200px]">
-              <div className="text-5xl mb-4">🥤</div>
-              <h4 className="font-bold text-gray-900">Drinks & Desserts</h4>
-              <p className="text-gray-600 text-sm text-center">Complete your meal</p>
-            </div>
-          </div>
+    <div className="max-w-2xl mx-auto py-10">
+      <div className="text-center mb-10">
+        <span className="inline-block px-4 py-2 bg-red-50 text-red-600 rounded-full font-semibold mb-4">
+          Get in Touch
+        </span>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          Send Us a <span className="text-red-600">Message</span>
+        </h2>
+        <p className="text-gray-600">
+          Have questions or special requests? Fill out the form below and we'll get back to you within 24 hours.
+        </p>
+      </div>
 
-          {/* Contact Methods */}
-          <div className="bg-gray-50 rounded-xl p-8">
-            <h4 className="text-xl font-bold text-gray-900 mb-6">Contact Options</h4>
-            <div className="space-y-6">
-              {contactMethods.map((method, index) => (
-                <div key={index} className="flex items-center">
-                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-xl mr-4">
-                    {method.icon}
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-gray-900">{method.title}</h5>
-                    <p className="text-gray-700">{method.details}</p>
-                    <p className="text-gray-500 text-sm">{method.time}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            {/* Delivery Info */}
-            <div className="mt-8 pt-8 border-t border-gray-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h5 className="font-bold text-gray-900">Delivery Time</h5>
-                  <p className="text-gray-600">30-minute guarantee</p>
-                </div>
-                <div className="text-2xl">⏰</div>
+      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {/* Name Field */}
+          <div className="relative">
+            <label className="block text-gray-700 font-medium mb-2">
+              Full Name *
+            </label>
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                <FaUser />
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column - Order Form */}
-        <div className="bg-white rounded-xl p-8">
-          <div className="mb-8">
-            <h3 className="text-3xl font-bold text-gray-900 mb-3">Place Your Order</h3>
-            <p className="text-gray-600">
-              Fill out this form and we'll prepare your food fresh. Delivery within 30 minutes or your money back.
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Personal Details */}
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors"
-                    placeholder="John Smith"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors"
-                    placeholder="(555) 123-4567"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors"
-                  placeholder="john@example.com"
-                />
-              </div>
-            </div>
-
-            {/* Order Type Selection */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-4">
-                How would you like to receive your order?
-              </label>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {[
-                  { 
-                    value: 'delivery', 
-                    label: 'Home Delivery',
-                    icon: '🚚',
-                    desc: 'Delivered to your door'
-                  },
-                  { 
-                    value: 'pickup', 
-                    label: 'Store Pickup',
-                    icon: '🏪',
-                    desc: 'Ready in 20 minutes'
-                  },
-                  { 
-                    value: 'catering', 
-                    label: 'Catering',
-                    icon: '🎉',
-                    desc: 'For events & parties'
-                  }
-                ].map((option) => (
-                  <label 
-                    key={option.value}
-                    className={`flex flex-col items-center justify-center p-4 border rounded-lg cursor-pointer transition-all ${
-                      formData.orderType === option.value 
-                        ? 'border-red-500 bg-red-50' 
-                        : 'border-gray-300 hover:border-gray-400'
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="orderType"
-                      value={option.value}
-                      checked={formData.orderType === option.value}
-                      onChange={handleChange}
-                      className="sr-only"
-                    />
-                    <div className="text-2xl mb-3">{option.icon}</div>
-                    <span className="font-medium text-gray-900 mb-1">{option.label}</span>
-                    <span className="text-sm text-gray-600 text-center">{option.desc}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            {/* Order Details */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Your Order Details *
-              </label>
-              <div className="mb-3">
-                <p className="text-sm text-gray-500 mb-2">
-                  What would you like to order?
-                </p>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {['Hot & Spicy Pizza', 'Roaring Roast', 'Fried Chicken', 'Garlic Bread', 'Salad', 'Soft Drinks'].map((item) => (
-                    <button
-                      key={item}
-                      type="button"
-                      onClick={() => setFormData({
-                        ...formData,
-                        message: formData.message ? `${formData.message}, ${item}` : item
-                      })}
-                      className="text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full transition-colors"
-                    >
-                      + {item}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows="4"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors"
-                placeholder="Example: 2 Hot & Spicy Pizzas (one with extra cheese), 1 Fried Chicken Combo, and 4 Garlic Bread pieces. Delivery to 123 Main St."
-              />
-            </div>
-
-            {/* Special Instructions */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Special Instructions (Optional)
-              </label>
               <input
                 type="text"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors"
-                placeholder="Allergies, dietary restrictions, or delivery notes"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300"
+                placeholder="John Doe"
               />
             </div>
+          </div>
 
-            {/* Submit Button */}
-            <div className="pt-4">
-              <button
-                type="submit"
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center"
-              >
-                <span className="mr-2">📋</span>
-                Submit Order Request
-                <span className="ml-2">→</span>
-              </button>
-              <p className="text-center text-gray-500 text-sm mt-4">
-                We'll call you to confirm your order within 10 minutes.
-              </p>
+          {/* Email Field */}
+          <div className="relative">
+            <label className="block text-gray-700 font-medium mb-2">
+              Email Address *
+            </label>
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                <FaEnvelope />
+              </div>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300"
+                placeholder="john@example.com"
+              />
             </div>
-          </form>
+          </div>
         </div>
-      </div>
+
+        {/* Phone Field */}
+        <div className="mb-6">
+          <label className="block text-gray-700 font-medium mb-2">
+            Phone Number
+          </label>
+          <div className="relative">
+            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+              <FaPhone />
+            </div>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300"
+              placeholder="+1 (555) 123-4567"
+            />
+          </div>
+        </div>
+
+        {/* Message Field */}
+        <div className="mb-8">
+          <label className="block text-gray-700 font-medium mb-2">
+            Your Message *
+          </label>
+          <div className="relative">
+            <div className="absolute left-4 top-4 text-gray-400">
+              <FaComment />
+            </div>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows="5"
+              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300 resize-none"
+              placeholder="Tell us about your inquiry or special request..."
+            />
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="w-full py-4 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group"
+        >
+          <span>Send Message</span>
+          <FaPaperPlane className="group-hover:translate-x-1 transition-transform duration-300" />
+        </button>
+
+        <p className="text-gray-500 text-sm text-center mt-6">
+          By submitting this form, you agree to our privacy policy. We'll never share your information.
+        </p>
+      </form>
     </div>
   );
 };
