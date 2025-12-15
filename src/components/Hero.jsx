@@ -87,7 +87,7 @@ const Hero = () => {
                     </div>
 
                     {/* Right Swiper Section */}
-                    <div className='h-96 sm:h-[500px] md:h-[600px] lg:h-screen'>
+                    <div className='h-96 sm:h-[500px] md:h-[600px] lg:h-screen lg:block hidden'>
                         <div className="swiper-container-wrapper h-full">
                             <Swiper
                                 effect={'coverflow'}
